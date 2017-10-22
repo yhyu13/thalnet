@@ -35,6 +35,17 @@ def plot_learning_curve(title,ys,zs,labels,ylim=(0,1)):
        
 
     plt.legend(loc="best")
-    plt.plot()
+    plt.show()
+    return plt
+    
+def plot_reading_weights(title,weights,labels):
+    plt.figure()
+    for i in range(len(weights)):
+        plt.subplot(411+i)
+        #print(labels[i])
+        x = weights[i].T
+        img = (x-np.min(x))/(np.max(x)-np.min(x))
+        img[img<0.05] = 0 
+        plt.imshow(img, cmap='Greys',  interpolation='nearest')
     plt.show()
     return plt
